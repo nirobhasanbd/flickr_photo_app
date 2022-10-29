@@ -86,6 +86,11 @@ final class NavBar: UIView {
         }
     }
     
+    func updateTitle(title: AppTexts) {
+        self.title = title.rawValue.tr
+        titleLbl.text = self.title
+    }
+    
     @objc private func backButtonPressed(sender: UIButton) {
         self.backButtonClicked?()
     }

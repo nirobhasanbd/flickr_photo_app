@@ -55,6 +55,8 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         super.viewDidLoad()
         self.view.backgroundColor = .background
        
+        NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChangedNotification, object: nil)
+        
         UITabBar.appearance().tintColor = .blueText
         UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.blueText], for: .selected)
@@ -80,6 +82,12 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
+    }
+    
+    @objc func languageChanged(notification: NSNotification) {
+        recentPhotoVC.navigationController?.tabBarItem = createTabBarItem(.recent_icon)
+        searchVC.navigationController?.tabBarItem = createTabBarItem(.search_icon)
+        settingsVC.navigationController?.tabBarItem = createTabBarItem(.settings_icon)
     }
     
     public func setupTabBar() {

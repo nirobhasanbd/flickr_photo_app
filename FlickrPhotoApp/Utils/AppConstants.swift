@@ -21,11 +21,11 @@ struct APIConstants {
     static let imageBaseUrl = "https://live.staticflickr.com/"
     
     static let baseUrl = "https://www.flickr.com/services/rest/"
-    static let photoSearchEndPoint = ""
     
     static let api_key = "59cd6086d178dd3fd0c775bce4371176"
     static let secrete = "84e48c7c0adf19ba"
-    static let method = "flickr.photos.search"
+    static let searchMethod = "flickr.photos.search"
+    static let recentMethod = "flickr.photos.getRecent"
     static let format = "json"
     static let nojsoncallback = "1"
     static let media = "photos"

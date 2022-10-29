@@ -1,21 +1,18 @@
 //
-//  ViewController.swift
+//  RecentPhotoViewController.swift
 //  FlickrPhotoApp
 //
-//  Created by mac 2019 on 10/25/22.
+//  Created by mac 2019 on 10/27/22.
 //
 
 import UIKit
+import SnapKit
 import Lightbox
 
-class PhotoSearchViewController: BaseViewController, Alertable {
-    
-    enum Section {
-        case main
-    }
+class RecentPhotoViewController: BaseViewController, Alertable {
     
     private lazy var photoCollectionView: UICollectionView = {
-        let collectionV = UIView.createCollectionView(delegate: self, dataSource: nil)
+        let collectionV = UIView.createCollectionView(delegate: self, dataSource: self)
         collectionV.collectionViewLayout = FlickrSearchFlowLayout()
         collectionV.register(PhotoGalleryCell.self, forCellWithReuseIdentifier: PhotoGalleryCell.cellIdentifier)
         collectionV.backgroundColor = .clear
@@ -25,25 +22,8 @@ class PhotoSearchViewController: BaseViewController, Alertable {
         return collectionV
     }()
     
-    private lazy var searchBar: UISearchBar = {
-        let searchB = UISearchBar()
-        searchB.delegate = self
-        searchB.backgroundColor = .background
-        searchB.barTintColor = .background
-        searchB.setBackgroundImage(UIImage(named: AppImages.transparent.rawValue), for: .any, barMetrics: .default)
-        searchB.placeholder = AppTexts.translate_id_0006.rawValue.tr
-        searchB.translatesAutoresizingMaskIntoConstraints = false
-        return searchB
-    }()
-    
     var refreshController = UIRefreshControl()
-    
-    // MARK: - Value Types
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, PhotoModel>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, PhotoModel>
-    
-    private lazy var dataSource = makeDataSource()
-    private var viewModel = PhotoSearchViewModel()
+    private var viewModel = RecentPhotoViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +41,13 @@ class PhotoSearchViewController: BaseViewController, Alertable {
     }
     
     @objc func languageChanged(notification: NSNotification) {
-        updateNavbarTitle(title: .translate_id_0005)
-        searchBar.placeholder = AppTexts.translate_id_0006.rawValue.tr
+        updateNavbarTitle(title: .translate_id_0004)
     }
     
     private func addSubViews() {
-        setupNavBar(title: .translate_id_0005)
+        setupNavBar(title: .translate_id_0004)
         
-        [searchBar, photoCollectionView].forEach { view in
+        [photoCollectionView].forEach { view in
             self.view.addSubview(view)
         }
     }
@@ -79,67 +58,40 @@ class PhotoSearchViewController: BaseViewController, Alertable {
     }
     
     private func setupLayout() {
-        searchBar.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(2.s)
-            make.trailing.equalToSuperview().offset(-2.s)
-            make.top.equalToSuperview().offset(navBarHeight)
-            make.height.equalTo(40.s)
-        }
-        
         photoCollectionView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(2.s)
             make.trailing.equalToSuperview().offset(-2.s)
-            make.top.equalTo(searchBar.snp.bottom)
+            make.top.equalToSuperview().offset(navBarHeight)
             make.bottom.equalTo(view.snp.bottomMargin)
         }
     }
     
     private func loadServerData() {
         self.showHUD()
-        viewModel.searchPhoto {[weak self] message, error in
+        viewModel.getRecentPhoto {[weak self] message, error in
             self?.hideHUD()
             if let error = error {
                 self?.showAlert(message: error)
             } else {
-                self?.applySnapshot(animatingDifferences: false)
+                self?.photoCollectionView.reloadData()
             }
         }
     }
     
     @objc func handleRefresh() {
         print("handle refresh")
-        viewModel.searchPhoto {[weak self] message, error in
+        viewModel.getRecentPhoto {[weak self] message, error in
             self?.refreshController.endRefreshing()
             if let error = error {
                 self?.showAlert(message: error)
             } else {
-                self?.applySnapshot(animatingDifferences: true)
+                self?.photoCollectionView.reloadData()
             }
         }
     }
-    
-    // MARK: - DataSource
-    func makeDataSource() -> DataSource {
-        let dataSource = DataSource(collectionView: photoCollectionView, cellProvider: { (collectionView, indexPath, photoModel) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoGalleryCell.cellIdentifier, for: indexPath) as? PhotoGalleryCell else {
-                fatalError("PhotoGalleryCell is not initialized properly")
-            }
-            cell.setupCell(indexPath: indexPath, photoModel: photoModel)
-            return cell
-        })
-        return dataSource
-    }
-    
-    func applySnapshot(animatingDifferences: Bool = true) {
-        
-        var snapshot = Snapshot()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(viewModel.photoModels)
-        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
-    }
 }
 
-extension PhotoSearchViewController: UICollectionViewDelegate {
+extension RecentPhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         LightboxConfig.preload = 2
         let images: [LightboxImage] = viewModel.photoModels.compactMap { photoModel in
@@ -156,7 +108,22 @@ extension PhotoSearchViewController: UICollectionViewDelegate {
     }
 }
 
-extension PhotoSearchViewController: UIScrollViewDelegate {
+extension RecentPhotoViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.photoModels.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoGalleryCell.cellIdentifier, for: indexPath) as? PhotoGalleryCell else {
+            fatalError("PhotoGalleryCell is not initialized properly")
+        }
+        let photoModel = viewModel.photoModels[indexPath.item]
+        cell.setupCell(indexPath: indexPath, photoModel: photoModel)
+        return cell
+    }
+}
+
+extension RecentPhotoViewController: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
@@ -173,25 +140,9 @@ extension PhotoSearchViewController: UIScrollViewDelegate {
                 if let error = error {
                     self?.showAlert(message: error)
                 } else {
-                    self?.applySnapshot(animatingDifferences: true)
+                    self?.photoCollectionView.reloadData()
                 }
             }
         }
     }
 }
-
-extension PhotoSearchViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.searchText = searchText
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        loadServerData()
-        photoCollectionView.setContentOffset(CGPoint.zero, animated: false)
-    }
-}
-

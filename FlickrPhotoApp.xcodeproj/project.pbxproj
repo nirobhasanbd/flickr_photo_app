@@ -12,6 +12,7 @@
 		1AD33B11290D36F6008CC192 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD33B0E290D36F6008CC192 /* SettingsViewModel.swift */; };
 		1AD33B12290D36F6008CC192 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD33B10290D36F6008CC192 /* SettingsViewController.swift */; };
 		1AD33B14290D3776008CC192 /* AppPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD33B13290D3776008CC192 /* AppPickerView.swift */; };
+		1AD33B18290D978B008CC192 /* RecentPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD33B17290D978A008CC192 /* RecentPhotoViewModel.swift */; };
 		1AE719AB290D1970001880D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AE7196C290D196F001880D4 /* Localizable.strings */; };
 		1AE719AC290D1970001880D4 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AE7196F290D196F001880D4 /* Inter-Medium.ttf */; };
 		1AE719AD290D1970001880D4 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AE71970290D196F001880D4 /* Roboto-Medium.ttf */; };
@@ -68,6 +69,7 @@
 		1AD33B0E290D36F6008CC192 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1AD33B10290D36F6008CC192 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1AD33B13290D3776008CC192 /* AppPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPickerView.swift; sourceTree = "<group>"; };
+		1AD33B17290D978A008CC192 /* RecentPhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentPhotoViewModel.swift; sourceTree = "<group>"; };
 		1AE7196D290D196F001880D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AE7196F290D196F001880D4 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		1AE71970290D196F001880D4 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -175,6 +177,22 @@
 			isa = PBXGroup;
 			children = (
 				1AD33B10290D36F6008CC192 /* SettingsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1AD33B15290D9756008CC192 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1AD33B17290D978A008CC192 /* RecentPhotoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1AD33B16290D9765008CC192 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1AE719E5290D1B4D001880D4 /* RecentPhotoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -351,7 +369,8 @@
 		1AE719E4290D1B4D001880D4 /* RecentPhotos */ = {
 			isa = PBXGroup;
 			children = (
-				1AE719E5290D1B4D001880D4 /* RecentPhotoViewController.swift */,
+				1AD33B16290D9765008CC192 /* View */,
+				1AD33B15290D9756008CC192 /* ViewModel */,
 			);
 			path = RecentPhotos;
 			sourceTree = "<group>";
@@ -535,6 +554,7 @@
 				1AE719EC290D1B4D001880D4 /* RecentPhotoViewController.swift in Sources */,
 				1AE719D7290D1970001880D4 /* AppDelegate.swift in Sources */,
 				1AD33B12290D36F6008CC192 /* SettingsViewController.swift in Sources */,
+				1AD33B18290D978B008CC192 /* RecentPhotoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,8 +31,7 @@ extension UserDefaults {
 
 extension Notification.Name {
     static let themeChangedNotification = Notification.Name("themeChangedNotification")
-    static let profileChangedNotification = Notification.Name("profileChangedNotification")
-    static let notiBadgeCangedChangedNotification = Notification.Name("notiBadgeChangedNotification")
+    static let languageChangedNotification = Notification.Name("languageChangedNotification")
 }
 
 extension UISwitch {
