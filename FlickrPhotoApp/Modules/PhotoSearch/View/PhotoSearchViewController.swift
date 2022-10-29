@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lightbox
 
 class PhotoSearchViewController: BaseViewController, Alertable {
     
@@ -134,7 +135,18 @@ class PhotoSearchViewController: BaseViewController, Alertable {
 
 extension PhotoSearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("you select at: \(indexPath.row)")
+        LightboxConfig.preload = 2
+        let images: [LightboxImage] = viewModel.photoModels.compactMap { photoModel in
+            guard let url = photoModel.url else { return nil}
+            return LightboxImage(imageURL: url, text: photoModel.title ?? "")
+        }
+        
+        let controller = LightboxController(images: images)
+        // bellow two lines are important
+        controller.dynamicBackground = true
+        controller.dynamicBackground = false
+        self.present(controller, animated: true)
+        controller.goTo(indexPath.item, animated: false)
     }
 }
 
