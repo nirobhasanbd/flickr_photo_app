@@ -35,19 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
     }
     
-//    public func setCustomTabbar() {
-//        let tabbarVC = CustomTabBarController()
-//        window?.rootViewController = tabbarVC
-//        window?.makeKeyAndVisible()
-//        tabbarVC.setupTabBar()
-//    }
-    
-//    public func setHomeViewController() {
-//        let searchVC = PhotoSearchViewController()
-//        let searchNC = CustomNavigationController(rootViewController: searchVC)
-//        window?.rootViewController = searchNC
-//        window?.makeKeyAndVisible()
-//    }
+    public func setCustomTabbar() {
+        let tabbarVC = CustomTabBarController()
+        window?.rootViewController = tabbarVC
+        window?.makeKeyAndVisible()
+        tabbarVC.setupTabBar()
+    }
 
 }
 

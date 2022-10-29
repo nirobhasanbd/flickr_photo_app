@@ -24,10 +24,10 @@ class SplashViewController: BaseViewController {
         bindingModel()
         defineLayout()
         
-//        let seconds = 0.5
-//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) { [weak self] in
-//            self?.decideAction()
-//        }
+        let seconds = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) { [weak self] in
+            self?.decideAction()
+        }
     }
     
     private func bindingModel() {
@@ -42,10 +42,10 @@ class SplashViewController: BaseViewController {
         }
     }
     
-//    private func decideAction() {
-//        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-//            appDelegate.setCustomTabbar()
-//        }
-//    }
+    private func decideAction() {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.setCustomTabbar()
+        }
+    }
 
 }
