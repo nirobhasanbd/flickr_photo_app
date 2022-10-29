@@ -89,7 +89,7 @@ class PhotoSearchViewController: BaseViewController, Alertable {
         photoCollectionView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(2.s)
             make.trailing.equalToSuperview().offset(-2.s)
-            make.top.equalTo(searchBar.snp.bottom)
+            make.top.equalTo(searchBar.snp.bottom).offset(6.s)
             make.bottom.equalTo(view.snp.bottomMargin)
         }
     }
