@@ -64,4 +64,12 @@ struct PhotoModel: Decodable, Hashable {
         case isfriend
         case isfamily
     }
+    
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(uuid)
+    }
+
+    static func == (lhs: PhotoModel, rhs: PhotoModel) -> Bool {
+      return lhs.uuid == rhs.uuid
+    }
 }
