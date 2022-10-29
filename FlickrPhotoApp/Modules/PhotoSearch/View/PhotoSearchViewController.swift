@@ -80,10 +80,10 @@ class PhotoSearchViewController: BaseViewController, Alertable {
     
     private func setupLayout() {
         searchBar.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(2.s)
-            make.trailing.equalToSuperview().offset(-2.s)
             make.top.equalToSuperview().offset(navBarHeight)
+            make.centerX.equalToSuperview()
             make.height.equalTo(40.s)
+            make.width.equalTo(335.s)
         }
         
         photoCollectionView.snp.makeConstraints { make in

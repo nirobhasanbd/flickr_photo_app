@@ -34,10 +34,14 @@ class BaseViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
     
     override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
         return true
     }
     
