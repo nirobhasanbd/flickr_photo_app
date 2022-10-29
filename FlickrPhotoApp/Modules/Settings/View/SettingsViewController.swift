@@ -114,12 +114,20 @@ class SettingsViewController: BaseViewController, Alertable {
         themeSwitch.isOn = AppManager.shared.isDarkMode
     }
     
+    private func updateUIElement() {
+        updateNavbarTitle(title: .translate_id_0003)
+        themeModeLbl.text = "\(AppTexts.translate_id_0010.rawValue.tr) \(AppManager.shared.isDarkMode ? "\(AppTexts.translate_id_0011.rawValue.tr)" : "\(AppTexts.translate_id_0012.rawValue.tr)") \(AppTexts.translate_id_0013.rawValue.tr)"
+        languageLbl.text = AppTexts.translate_id_0019.rawValue.tr
+    }
+    
     @objc func switchValueChanged(sender: UISwitch) {
         changeTheme(isDark: !AppManager.shared.isDarkMode)
         containerView.round(radius: 10.s, borderColor: .lightGray.withAlphaComponent(0.2), borderWidth: 1.s)
         AppManager.shared.saveDarkMode(isDark: AppManager.shared.isDarkMode)
         
         themeModeLbl.text = "\(AppTexts.translate_id_0010.rawValue.tr) \(AppManager.shared.isDarkMode ? "\(AppTexts.translate_id_0011.rawValue.tr)" : "\(AppTexts.translate_id_0012.rawValue.tr)") \(AppTexts.translate_id_0013.rawValue.tr)"
+        
+        NotificationCenter.default.post(name: .themeChangedNotification, object: nil)
     }
     
     @objc func arrowBtnClicked(sender: UIButton) {
@@ -131,9 +139,11 @@ class SettingsViewController: BaseViewController, Alertable {
             print("index: \(index) value: \(value)")
             self.viewModel.selectedLang = value
             AppManager.shared.setLanguage(lang: self.viewModel.getLangCode().rawValue)
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                appDelegate.setCustomTabbar()
-            }
+            NotificationCenter.default.post(name: .languageChangedNotification, object: nil)
+            self.updateUIElement()
+//            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//                appDelegate.setCustomTabbar()
+//            }
         }
         self.view.addSubview(langPicker)
     }

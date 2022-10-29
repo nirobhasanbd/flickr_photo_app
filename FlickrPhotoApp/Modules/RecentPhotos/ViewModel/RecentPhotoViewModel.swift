@@ -7,15 +7,14 @@
 
 import Foundation
 
-class PhotoSearchViewModel {
-    var searchText: String = ""
+class RecentPhotoViewModel {
     var photoModels: [PhotoModel] = []
     var totalPages = 0
     var page = 1
     var apiCalling = false
     
-    func searchPhoto(onResult: @escaping (_ message: String?, _ error: String?) -> Void) {
-        let params: [String: String] = ["method": APIConstants.searchMethod, "api_key": APIConstants.api_key, "format": APIConstants.format, "nojsoncallback": "1", "secrete": APIConstants.secrete, "media": APIConstants.media, "per_page": "30", "tags": searchText]
+    func getRecentPhoto(onResult: @escaping (_ message: String?, _ error: String?) -> Void) {
+        let params: [String: String] = ["method": APIConstants.recentMethod, "api_key": APIConstants.api_key, "format": APIConstants.format, "nojsoncallback": "1", "secrete": APIConstants.secrete, "media": APIConstants.media, "per_page": "30"]
         
         NetworkServices.shared.getRequest(type: PhotoResponseModel.self, endPoint: "", params: params) {[weak self] value, error in
             if value != nil { // success
@@ -42,7 +41,7 @@ class PhotoSearchViewModel {
     }
     
     func loadMorePhoto(onResult: @escaping (_ message: String?, _ error: String?) -> Void) {
-        let params: [String: String] = ["method": APIConstants.searchMethod, "api_key": APIConstants.api_key, "format": APIConstants.format, "nojsoncallback": "1", "secrete": APIConstants.secrete, "media": APIConstants.media, "page": "\(page)", "per_page": "30", "tags": searchText]
+        let params: [String: String] = ["method": APIConstants.recentMethod, "api_key": APIConstants.api_key, "format": APIConstants.format, "nojsoncallback": "1", "secrete": APIConstants.secrete, "media": APIConstants.media, "page": "\(page)", "per_page": "30"]
         
         NetworkServices.shared.getRequest(type: PhotoResponseModel.self, endPoint: "", params: params) {[weak self] value, error in
             if value != nil { // success

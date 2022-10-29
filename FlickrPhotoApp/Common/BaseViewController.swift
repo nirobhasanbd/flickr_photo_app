@@ -11,6 +11,7 @@ import MBProgressHUD
 
 class BaseViewController: UIViewController {
 
+    var navBar: NavBar?
     var navBarHeight: CGFloat!
     
     // MARK: -Super Methods
@@ -48,15 +49,19 @@ class BaseViewController: UIViewController {
     
     // MARK: -Custom Methods
     func setupNavBar(title: AppTexts, backButtonClicked: BackButtonClicked? = nil, rightButtonClicked: RightButtonClicked? = nil) {
-        let navBar = NavBar(title: title.rawValue.tr, backButtonClicked: backButtonClicked, rightButtonClicked: rightButtonClicked)
-        self.view.addSubview(navBar)
+        navBar = NavBar(title: title.rawValue.tr, backButtonClicked: backButtonClicked, rightButtonClicked: rightButtonClicked)
+        self.view.addSubview(navBar!)
         navBarHeight = SizeConfig.navBarHeight
-        navBar.snp.makeConstraints { make in
+        navBar?.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(0.s)
             make.top.equalToSuperview().offset(0.s)
             make.trailing.equalToSuperview().offset(0.s)
             make.height.equalTo(SizeConfig.navBarHeight)
         }
+    }
+    
+    func updateNavbarTitle(title: AppTexts) {
+        navBar?.updateTitle(title: title)
     }
     
     func showHUD() {
