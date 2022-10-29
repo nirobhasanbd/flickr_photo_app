@@ -151,4 +151,6 @@ extension UIColor {
     static let blueText = UIColor.init(hexString: "#3385FF")
     static let background = UIColor(named: "background")
     static let whiteBlack = UIColor(named: "white_black")
+    static let whiteGray = UIColor(named: "white_gray")
+    static let grayDarkLight = UIColor(named: "gray_dark_light")
 }

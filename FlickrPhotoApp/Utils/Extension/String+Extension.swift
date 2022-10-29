@@ -11,7 +11,7 @@ import UIKit
 
 extension String {
     var tr: String {
-        let selectedLanguage = "ja"//AppManager.shared.getLanguage()
+        let selectedLanguage = AppManager.shared.getLanguage()
         if let path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj"), let bundle = Bundle(path: path) {
             return NSLocalizedString(self, tableName: "Localizable", bundle: bundle, value: self, comment: self)
         }
