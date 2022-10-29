@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1A19B47C290D050F0079C7B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A19B47B290D050F0079C7B0 /* Assets.xcassets */; };
 		1A19B47F290D050F0079C7B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A19B47D290D050F0079C7B0 /* LaunchScreen.storyboard */; };
+		1AD33B11290D36F6008CC192 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD33B0E290D36F6008CC192 /* SettingsViewModel.swift */; };
+		1AD33B12290D36F6008CC192 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD33B10290D36F6008CC192 /* SettingsViewController.swift */; };
+		1AD33B14290D3776008CC192 /* AppPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD33B13290D3776008CC192 /* AppPickerView.swift */; };
 		1AE719AB290D1970001880D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AE7196C290D196F001880D4 /* Localizable.strings */; };
 		1AE719AC290D1970001880D4 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AE7196F290D196F001880D4 /* Inter-Medium.ttf */; };
 		1AE719AD290D1970001880D4 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AE71970290D196F001880D4 /* Roboto-Medium.ttf */; };
@@ -51,7 +54,6 @@
 		1AE719E8290D1B4D001880D4 /* PhotoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE719DE290D1B4D001880D4 /* PhotoSearchViewController.swift */; };
 		1AE719E9290D1B4D001880D4 /* FlickrSearchFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE719DF290D1B4D001880D4 /* FlickrSearchFlowLayout.swift */; };
 		1AE719EA290D1B4D001880D4 /* PhotoGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE719E1290D1B4D001880D4 /* PhotoGalleryCell.swift */; };
-		1AE719EB290D1B4D001880D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE719E3290D1B4D001880D4 /* SettingsViewController.swift */; };
 		1AE719EC290D1B4D001880D4 /* RecentPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE719E5290D1B4D001880D4 /* RecentPhotoViewController.swift */; };
 		1AE719EE290D1C1C001880D4 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE719ED290D1C1C001880D4 /* CustomTabBarController.swift */; };
 		5323733B025EA9055A5543D4 /* Pods_FlickrPhotoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE04200A9B30E254DEA9C812 /* Pods_FlickrPhotoApp.framework */; };
@@ -63,6 +65,9 @@
 		1A19B47B290D050F0079C7B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A19B47E290D050F0079C7B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A19B480290D050F0079C7B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AD33B0E290D36F6008CC192 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		1AD33B10290D36F6008CC192 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1AD33B13290D3776008CC192 /* AppPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPickerView.swift; sourceTree = "<group>"; };
 		1AE7196D290D196F001880D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AE7196F290D196F001880D4 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		1AE71970290D196F001880D4 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -106,7 +111,6 @@
 		1AE719DE290D1B4D001880D4 /* PhotoSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSearchViewController.swift; sourceTree = "<group>"; };
 		1AE719DF290D1B4D001880D4 /* FlickrSearchFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearchFlowLayout.swift; sourceTree = "<group>"; };
 		1AE719E1290D1B4D001880D4 /* PhotoGalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGalleryCell.swift; sourceTree = "<group>"; };
-		1AE719E3290D1B4D001880D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1AE719E5290D1B4D001880D4 /* RecentPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentPhotoViewController.swift; sourceTree = "<group>"; };
 		1AE719ED290D1C1C001880D4 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		29F37B1D17B70CABEE6D143E /* Pods-FlickrPhotoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrPhotoApp.release.xcconfig"; path = "Target Support Files/Pods-FlickrPhotoApp/Pods-FlickrPhotoApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,17 +150,33 @@
 		1A19B471290D050D0079C7B0 /* FlickrPhotoApp */ = {
 			isa = PBXGroup;
 			children = (
+				1A19B480290D050F0079C7B0 /* Info.plist */,
+				1A19B47B290D050F0079C7B0 /* Assets.xcassets */,
+				1A19B47D290D050F0079C7B0 /* LaunchScreen.storyboard */,
 				1AE719A8290D1970001880D4 /* Application */,
 				1AE7198E290D196F001880D4 /* Common */,
 				1AE71995290D196F001880D4 /* Modules */,
 				1AE719A6290D196F001880D4 /* Network */,
 				1AE7196B290D196F001880D4 /* Resources */,
 				1AE71985290D196F001880D4 /* Utils */,
-				1A19B47B290D050F0079C7B0 /* Assets.xcassets */,
-				1A19B47D290D050F0079C7B0 /* LaunchScreen.storyboard */,
-				1A19B480290D050F0079C7B0 /* Info.plist */,
 			);
 			path = FlickrPhotoApp;
+			sourceTree = "<group>";
+		};
+		1AD33B0D290D36F6008CC192 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1AD33B0E290D36F6008CC192 /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1AD33B0F290D36F6008CC192 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1AD33B10290D36F6008CC192 /* SettingsViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1AE7196B290D196F001880D4 /* Resources */ = {
@@ -221,6 +241,7 @@
 		1AE7198E290D196F001880D4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1AD33B13290D3776008CC192 /* AppPickerView.swift */,
 				1AE719ED290D1C1C001880D4 /* CustomTabBarController.swift */,
 				1AE7198F290D196F001880D4 /* BaseViewController.swift */,
 				1AE71994290D196F001880D4 /* CustomNavigationController.swift */,
@@ -321,7 +342,8 @@
 		1AE719E2290D1B4D001880D4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				1AE719E3290D1B4D001880D4 /* SettingsViewController.swift */,
+				1AD33B0F290D36F6008CC192 /* View */,
+				1AD33B0D290D36F6008CC192 /* ViewModel */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -489,8 +511,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AE719CC290D1970001880D4 /* CustomNavigationController.swift in Sources */,
+				1AD33B11290D36F6008CC192 /* SettingsViewModel.swift in Sources */,
+				1AD33B14290D3776008CC192 /* AppPickerView.swift in Sources */,
 				1AE719E6290D1B4D001880D4 /* PhotoSearchViewModel.swift in Sources */,
-				1AE719EB290D1B4D001880D4 /* SettingsViewController.swift in Sources */,
 				1AE719E7290D1B4D001880D4 /* PhotoListModel.swift in Sources */,
 				1AE719C2290D1970001880D4 /* UIView+Extension.swift in Sources */,
 				1AE719C6290D1970001880D4 /* AppConstants.swift in Sources */,
@@ -511,6 +534,7 @@
 				1AE719C9290D1970001880D4 /* Alertible.swift in Sources */,
 				1AE719EC290D1B4D001880D4 /* RecentPhotoViewController.swift in Sources */,
 				1AE719D7290D1970001880D4 /* AppDelegate.swift in Sources */,
+				1AD33B12290D36F6008CC192 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
