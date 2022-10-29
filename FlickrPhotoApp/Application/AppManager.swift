@@ -66,9 +66,4 @@ final class AppManager {
         return "ver.\(Bundle.main.formattedVersion)"
     }
     
-//    func getImageUrl(photoModel: PhotoModel) -> URL? {
-//        let urlStr = APIConstants.imageBaseUrl + photoModel.server + "/" + photoModel.id + "_" + photoModel.secret + ".jpg"
-//        return URL(string: urlStr)
-//    }
-    
 }

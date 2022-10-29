@@ -44,7 +44,7 @@ struct PhotoModel: Decodable, Hashable {
     let secret: String
     let server: String
     let farm: Int
-    let title: String
+    let title: String?
     let ispublic: Int
     let isfriend: Int
     let isfamily: Int

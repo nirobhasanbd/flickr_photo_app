@@ -11,5 +11,6 @@ target 'FlickrPhotoApp' do
   pod 'SDWebImage', '5.13.4'
   pod 'MBProgressHUD', '1.2.0'
   pod 'Alamofire', '5.6.2'
+  pod 'Lightbox', '2.5.0'
 
 end
