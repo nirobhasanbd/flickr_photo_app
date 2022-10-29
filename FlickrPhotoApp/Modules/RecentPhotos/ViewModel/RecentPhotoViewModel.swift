@@ -14,7 +14,7 @@ class RecentPhotoViewModel {
     var apiCalling = false
     
     func getRecentPhoto(onResult: @escaping (_ message: String?, _ error: String?) -> Void) {
-        let params: [String: String] = ["method": APIConstants.recentMethod, "api_key": APIConstants.api_key, "format": APIConstants.format, "nojsoncallback": "1", "secrete": APIConstants.secrete, "media": APIConstants.media, "per_page": "30"]
+        let params: [String: String] = ["method": APIConstants.recentMethod, "api_key": APIConstants.api_key, "format": APIConstants.format, "nojsoncallback": "1", "per_page": "30"]
         
         NetworkServices.shared.getRequest(type: PhotoResponseModel.self, endPoint: "", params: params) {[weak self] value, error in
             if value != nil { // success
@@ -41,7 +41,7 @@ class RecentPhotoViewModel {
     }
     
     func loadMorePhoto(onResult: @escaping (_ message: String?, _ error: String?) -> Void) {
-        let params: [String: String] = ["method": APIConstants.recentMethod, "api_key": APIConstants.api_key, "format": APIConstants.format, "nojsoncallback": "1", "secrete": APIConstants.secrete, "media": APIConstants.media, "page": "\(page)", "per_page": "30"]
+        let params: [String: String] = ["method": APIConstants.recentMethod, "api_key": APIConstants.api_key, "format": APIConstants.format, "nojsoncallback": "1", "page": "\(page)", "per_page": "30"]
         
         NetworkServices.shared.getRequest(type: PhotoResponseModel.self, endPoint: "", params: params) {[weak self] value, error in
             if value != nil { // success
