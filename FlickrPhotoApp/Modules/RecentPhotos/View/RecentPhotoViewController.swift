@@ -38,6 +38,7 @@ class RecentPhotoViewController: BaseViewController, Alertable {
     
     deinit {
         print("deinit search vc")
+        NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
     }
     
     @objc func languageChanged(notification: NSNotification) {
