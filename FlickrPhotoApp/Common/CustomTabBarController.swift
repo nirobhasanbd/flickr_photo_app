@@ -84,6 +84,11 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
 
     }
     
+    deinit {
+        print("custom tabbar deinit")
+        NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
+    }
+    
     @objc func languageChanged(notification: NSNotification) {
         recentPhotoVC.navigationController?.tabBarItem = createTabBarItem(.recent_icon)
         searchVC.navigationController?.tabBarItem = createTabBarItem(.search_icon)
