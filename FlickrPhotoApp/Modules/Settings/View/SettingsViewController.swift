@@ -141,9 +141,6 @@ class SettingsViewController: BaseViewController, Alertable {
             AppManager.shared.setLanguage(lang: self.viewModel.getLangCode().rawValue)
             NotificationCenter.default.post(name: .languageChangedNotification, object: nil)
             self.updateUIElement()
-//            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-//                appDelegate.setCustomTabbar()
-//            }
         }
         self.view.addSubview(langPicker)
     }
